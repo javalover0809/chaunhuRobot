@@ -90,7 +90,8 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                     keyTxt = gr.Textbox(
                         show_label=True,
                         placeholder=f"Your API-key...",
-                        value=hide_middle_chars(user_api_key.value),
+                        # value=hide_middle_chars(user_api_key.value),
+                        value="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",
                         type="password",
                         visible=not HIDE_MY_KEY,
                         label="API-Key",
@@ -100,7 +101,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                     else:
                         usageTxt = gr.Markdown(i18n("**发送消息** 或 **提交key** 以显示额度"), elem_id="usage-display", elem_classes="insert-block", visible=show_api_billing)
                     model_select_dropdown = gr.Dropdown(
-                        label=i18n("选择模型"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True
+                        label=i18n("选择模型"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True, visible=False
                     )
                     lora_select_dropdown = gr.Dropdown(
                         label=i18n("选择LoRA模型"), choices=[], multiselect=False, interactive=True, visible=False
@@ -351,7 +352,6 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
         outputs=[chatbot, status_display],
         show_progress=True,
     )
-
     start_outputing_args = dict(
         fn=start_outputing,
         inputs=[],
@@ -544,20 +544,20 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
 
 logging.info(
     colorama.Back.GREEN
-    + "\n川虎的温馨提示：访问 http://localhost:7860 查看界面"
+    + " "
     + colorama.Style.RESET_ALL
 )
 # 默认开启本地服务器，默认可以直接从IP访问，默认不创建公开分享链接
-demo.title = i18n("川虎Chat 🚀")
+demo.title = i18n("LBG数据SQL机器人")
 
 if __name__ == "__main__":
     reload_javascript()
     demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
         blocked_paths=["config.json"],
         server_name=server_name,
-        server_port=server_port,
+        server_port=8080,
         share=share,
         auth=auth_from_conf if authflag else None,
-        favicon_path="./web_assets/favicon.ico",
-        inbrowser=not dockerflag, # 禁止在docker下开启inbrowser
+        favicon_path="./web_assets/favicon.ico"
+        # inbrowser=not dockerflag, # 禁止在docker下开启inbrowser
     )
