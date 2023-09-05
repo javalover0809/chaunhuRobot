@@ -91,8 +91,8 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         show_label=True,
                         placeholder=f"Your API-key...",
                         # value=hide_middle_chars(user_api_key.value),
-                        value="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",
-                        type="password",
+                        value="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",
+                        type="text",
                         visible=not HIDE_MY_KEY,
                         label="API-Key",
                     )

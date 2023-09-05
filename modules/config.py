@@ -179,7 +179,8 @@ https_proxy = config.get("https_proxy", https_proxy)
 os.environ["HTTP_PROXY"] = ""
 os.environ["HTTPS_PROXY"] = ""
 
-local_embedding = config.get("local_embedding", False)  # 是否使用本地embedding
+# local_embedding = config.get("local_embedding", False)  # 是否使用本地embedding
+local_embedding = config.get("local_embedding", True)  # 是否使用本地embedding
 
 
 @contextmanager

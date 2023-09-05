@@ -102,7 +102,7 @@ def construct_index(
         os.environ["OPENAI_API_KEY"] = api_key
     else:
         # 由于一个依赖的愚蠢的设计，这里必须要有一个API KEY
-        os.environ["OPENAI_API_KEY"] = "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"
+        os.environ["OPENAI_API_KEY"] = "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"
     chunk_size_limit = None if chunk_size_limit == 0 else chunk_size_limit
     embedding_limit = None if embedding_limit == 0 else embedding_limit
     separator = " " if separator == "" else separator
@@ -116,8 +116,7 @@ def construct_index(
     if local_embedding:
         from langchain.embeddings.huggingface import HuggingFaceEmbeddings
         print('上面1')
-        embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/distiluse-base-multilingual-cased-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/distiluse-base-multilingual-cased-v2")
     else:
         from langchain.embeddings import OpenAIEmbeddings
         print('下面2')
